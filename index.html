@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>台南市警察局 逮捕報告</title>
+<style>
+    body { font-family: "Microsoft JhengHei", sans-serif; background-color: #f4f5f7; display: flex; justify-content: center; padding: 20px; }
+    .form-container { background: white; padding: 30px 40px; width: 210mm; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-top: 6px solid #1a365d; }
+    h1 { text-align: center; color: #1a365d; margin: 0; font-size: 24px; letter-spacing: 4px; }
+    h2 { text-align: center; color: #000; margin: 10px 0 20px 0; font-size: 28px; letter-spacing: 8px; font-weight: 900; }
+    .country { text-align: center; color: #2b6cb0; font-weight: bold; letter-spacing: 2px; margin-bottom: 5px; }
+    .section { background: #2b6cb0; color: white; padding: 6px 12px; font-weight: bold; margin-top: 20px; font-size: 15px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 5px; }
+    th, td { border: 1px solid #718096; padding: 10px; font-size: 14px; }
+    th { background: #edf2f7; text-align: center; white-space: nowrap; color: #2d3748; }
+    input[type="text"], select, textarea { width: 95%; border: none; border-bottom: 1px solid #cbd5e0; outline: none; font-size: 14px; background: transparent; padding: 4px; font-family: inherit; }
+    input[type="text"]:focus, select:focus, textarea:focus { border-bottom: 2px solid #2b6cb0; }
+    textarea { border: 1px solid #cbd5e0; border-radius: 4px; resize: vertical; }
+    .date-input { width: 35px; text-align: center; margin: 0 4px; }
+    .checkbox-group label { margin-right: 18px; cursor: pointer; display: inline-flex; align-items: center; }
+    .checkbox-group input { margin-right: 6px; width: 16px; height: 16px; cursor: pointer; }
+    .btn-container { text-align: right; margin-top: 30px; border-top: 1px solid #e2e8f0; padding-top: 20px; }
+    button { background: #5865F2; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 15px; border-radius: 4px; font-weight: bold; transition: 0.2s; }
+    button:hover { background: #4752C4; }
+    .btn-print { background: #4a5568; margin-left: 10px; }
+    .btn-print:hover { background: #2d3748; }
+</style>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="country">中華民國</div>
+    <h1>台南市警察局</h1>
+    <h2>逮 捕 報 告</h2>
+
+    <div class="section">壹、案件與逮捕基本資訊</div>
+    <table>
+        <tr>
+            <th width="15%">承辦警員</th>
+            <td width="35%"><input type="text" id="officerName"></td>
+            <th width="15%">警號</th>
+            <td width="35%"><input type="text" id="badgeNum"></td>
+        </tr>
+        <tr>
+            <th>逮捕地點</th>
+            <td><input type="text" id="location"></td>
+            <th>城市</th>
+            <td>台南市</td>
+        </tr>
+        <tr>
+            <th>逮捕時間</th>
+            <td>
+                民國 <input type="text" class="date-input" id="year">年 
+                <input type="text" class="date-input" id="month">月 
+                <input type="text" class="date-input" id="day">日 
+                <input type="text" class="date-input" id="hour">時 
+                <input type="text" class="date-input" id="minute">分
+            </td>
+            <th>案件號碼</th>
+            <td><input type="text" id="caseNum"></td>
+        </tr>
+        <tr>
+            <th>保護管束</th>
+            <td colspan="3" class="checkbox-group">
+                <label><input type="radio" name="protect" value="是"> 是</label>
+                <label><input type="radio" name="protect" value="否"> 否</label>
+            </td>
+        </tr>
+    </table>
+
+    <div class="section">貳、被捕者個人資訊</div>
+    <table>
+        <tr>
+            <th width="15%">被捕者姓名</th>
+            <td width="35%"><input type="text" id="suspectName"></td>
+            <th width="15%">出生年月日</th>
+            <td width="35%">
+                民國 <input type="text" class="date-input" id="dobYear">年 
+                <input type="text" class="date-input" id="dobMonth">月 
+                <input type="text" class="date-input" id="dobDay">日
+            </td>
+        </tr>
+        <tr>
+            <th>性別</th>
+            <td class="checkbox-group">
+                <label><input type="radio" name="gender" value="男"> 男</label>
+                <label><input type="radio" name="gender" value="女"> 女</label>
+            </td>
+            <th>髮色</th>
+            <td><input type="text" id="hairColor"></td>
+        </tr>
+        <tr>
+            <th>職業</th>
+            <td colspan="3"><input type="text" id="occupation" style="width: 98%;"></td>
+        </tr>
+    </table>
+
+    <div class="section">參、逮捕情節與涉案資訊</div>
+    <table>
+        <tr>
+            <th width="15%">涉案身分</th>
+            <td width="35%" class="checkbox-group">
+                <label><input type="radio" name="status" value="通緝犯"> 通緝犯</label>
+                <label><input type="radio" name="status" value="嫌疑犯"> 嫌疑犯</label>
+                <label><input type="radio" name="status" value="現行犯"> 現行犯</label>
+            </td>
+            <th width="15%">武器型號</th>
+            <td width="35%"><input type="text" id="weapon"></td>
+        </tr>
+        <tr>
+            <th>所犯罪名</th>
+            <td colspan="3"><input type="text" id="crimes" style="width: 98%;"></td>
+        </tr>
+        <tr>
+            <th>搜身搜查物品</th>
+            <td colspan="3"><input type="text" id="searchItems" style="width: 98%;"></td>
+        </tr>
+    </table>
+
+    <div class="section">肆、相關車輛資訊</div>
+    <table>
+        <tr>
+            <th width="15%">車輛型號</th>
+            <td width="35%"><input type="text" id="carModel"></td>
+            <th width="15%">車牌號碼</th>
+            <td width="35%"><input type="text" id="carPlate"></td>
+        </tr>
+        <tr>
+            <th>車輛處置</th>
+            <td class="checkbox-group">
+                <label><input type="radio" name="carStatus" value="扣押"> 扣押</label>
+                <label><input type="radio" name="carStatus" value="留置現場"> 留置現場</label>
+                <label><input type="radio" name="carStatus" value="親友開回"> 親友開回</label>
+            </td>
+            <th>顏色</th>
+            <td><input type="text" id="carColor"></td>
+        </tr>
+        <tr>
+            <th>損傷情形</th>
+            <td colspan="3"><input type="text" id="carDamage" style="width: 98%;"></td>
+        </tr>
+        <tr>
+            <th>車內搜查</th>
+            <td colspan="3"><input type="text" id="carItems" style="width: 98%;"></td>
+        </tr>
+        <tr>
+            <th>註冊所有人</th>
+            <td colspan="3"><input type="text" id="carOwner" style="width: 98%;"></td>
+        </tr>
+    </table>
+
+    <div class="section">伍、案情詳細敘述</div>
+    <table style="border: none;">
+        <tr>
+            <td style="border: none; padding: 0;"><textarea id="narrative" rows="4" style="width: 100%; box-sizing: border-box; padding: 10px;" placeholder="請簡述案發經過與逮捕詳情..."></textarea></td>
+        </tr>
+    </table>
+
+    <div class="section">陸、權責簽章與審核系統</div>
+    <table>
+        <tr>
+            <th width="20%">承辦警員電子簽章</th>
+            <td width="30%"><input type="text" id="officerSig" placeholder="輸入姓名或警號視同簽名"></td>
+            <th width="20%">呈送審核主管</th>
+            <td width="30%">
+                <select id="supervisor">
+                    <option value="@here">值班主管 / 管理員 (@here)</option>
+                    <option value="所長">派出所所長</option>
+                    <option value="分局長">分局長</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <div class="btn-container">
+        <button onclick="sendToDiscord()">一鍵簽核陳報至 Discord</button>
+        <button class="btn-print" onclick="window.print()">列印 / 儲存為 PDF</button>
+    </div>
+</div>
+
+<script>
+    async function sendToDiscord() {
+        const webhookURL = "https://discord.com/api/webhooks/1535974414158532668/yMqPPF1Pe92V_rU-Rxduyjo1ahSpINiUSKqhwP24rJ6kt9PXkjm2bCAnGggT1Wd683pp";
+
+        const getRadioValue = (name) => {
+            const checked = document.querySelector(`input[name="${name}"]:checked`);
+            return checked ? checked.value : "未填寫";
+        };
+
+        // 壹~參：基本資料
+        const officerName = document.getElementById("officerName").value || "未填寫";
+        const badgeNum = document.getElementById("badgeNum").value || "未填寫";
+        const location = document.getElementById("location").value || "未填寫";
+        const caseNum = document.getElementById("caseNum").value || "未填寫";
+        const time = `${document.getElementById("year").value || "X"}年 ${document.getElementById("month").value || "X"}月 ${document.getElementById("day").value || "X"}日 ${document.getElementById("hour").value || "X"}時 ${document.getElementById("minute").value || "X"}分`;
+        const protect = getRadioValue("protect");
+        const suspectName = document.getElementById("suspectName").value || "未填寫";
+        const dob = `${document.getElementById("dobYear").value || "X"}年 ${document.getElementById("dobMonth").value || "X"}月 ${document.getElementById("dobDay").value || "X"}日`;
+        const gender = getRadioValue("gender");
+        const hairColor = document.getElementById("hairColor").value || "未填寫";
+        const occupation = document.getElementById("occupation").value || "未填寫";
+        const status = getRadioValue("status");
+        const weapon = document.getElementById("weapon").value || "無";
+        const crimes = document.getElementById("crimes").value || "未填寫";
+        const searchItems = document.getElementById("searchItems").value || "無";
+
+        // 肆：車輛資料
+        const carModel = document.getElementById("carModel").value || "無";
+        const carPlate = document.getElementById("carPlate").value || "無";
+        const carColor = document.getElementById("carColor").value || "無";
+        const carStatus = getRadioValue("carStatus");
+
+        // 伍：案情敘述 (避免字數過多導致 Discord 報錯，截斷至 1000 字)
+        let narrative = document.getElementById("narrative").value || "未填寫";
+        if(narrative.length > 1000) narrative = narrative.substring(0, 1000) + "...";
+
+        // 陸：簽核系統
+        const officerSig = document.getElementById("officerSig").value || "未簽章";
+        const supervisor = document.getElementById("supervisor").value;
+
+        // 設定 Discord 通知文字 (如果有選主管，就 Tag)
+        let contentText = "";
+        if (supervisor !== "無") {
+            contentText = ` **新案件陳報！** 請主管 \`${supervisor}\` 進行審查並於下方點擊 ✅ 批准或 ❌ 退回。`;
+        }
+
+        const payload = {
+            username: "警政陳報與簽核系統", 
+            avatar_url: "https://upload.wikimedia.org/wikipedia/zh/thumb/1/1b/Republic_of_China_Police_Logo.svg/1200px-Republic_of_China_Police_Logo.svg.png",
+            content: contentText,
+            embeds: [{
+                title: `逮捕報告陳報 - 案件號碼: ${caseNum}`,
+                color: 2845872,
+                fields: [
+                    { name: "案件基本資訊", value: `**承辦員警:** ${officerName} (${badgeNum})\n**逮捕時間:** 民國 ${time}\n**逮捕地點:** ${location}\n**保護管束:** ${protect}`, inline: false },
+                    { name: "被捕者與涉案資訊", value: `**姓名:** ${suspectName} (${gender})\n**涉案身分:** ${status}\n**所犯罪名:** ${crimes}\n**搜查物品:** ${searchItems}\n**武器型號:** ${weapon}`, inline: false },
+                    { name: "車輛資訊", value: `**車型/車牌:** ${carModel} / ${carPlate}\n**處置狀態:** ${carStatus}`, inline: false },
+                    { name: "案情詳細敘述", value: `\`\`\`${narrative}\`\`\``, inline: false },
+                    { name: "權責簽核狀態", value: `**承辦人電子簽章:** ${officerSig}\n**主管審核狀態:** 待簽核 (等待回覆)`, inline: false }
+                ],
+                footer: {
+                    text: "台南市警察局刑事紀錄 / 機密等級：內部公務"
+                },
+                timestamp: new Date().toISOString()
+            }]
+        };
+
+        try {
+            const response = await fetch(webhookURL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                alert("✅ 逮捕報告已成功陳報並發送簽核通知！");
+            } else {
+                alert("❌ 傳送失敗，請確認 Discord 網址。");
+            }
+        } catch (error) {
+            alert("❌ 發生網路錯誤！");
+        }
+    }
+</script>
+</body>
+</html>
