@@ -221,7 +221,7 @@
         // 設定 Discord 通知文字 (如果有選主管，就 Tag)
         let contentText = "";
         if (supervisor !== "無") {
-            contentText = ` **新案件陳報！** 請主管 \`${supervisor}\` 進行審查並於下方點擊 ✅ 批准或 ❌ 退回。`;
+            contentText = `🔔 **新案件陳報！** 請主管 \`${supervisor}\` 進行審查並於下方點擊 ✅ 批准或 ❌ 退回。`;
         }
 
         const payload = {
@@ -246,7 +246,8 @@
         };
 
         try {
-            const response = await fetch(webhookURL, {
+            // 這裡將原本大寫的 webhookURL 修正為正確的小寫 webhookUrl
+            const response = await fetch(webhookUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
@@ -255,7 +256,7 @@
             if (response.ok) {
                 alert("✅ 逮捕報告已成功陳報並發送簽核通知！");
             } else {
-                alert("❌ 傳送失敗，請確認 Discord 網址。");
+                alert("❌ 傳送失敗，請確認 Discord 網址或內容格式。");
             }
         } catch (error) {
             alert("❌ 發生網路錯誤！");
